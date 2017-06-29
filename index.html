@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html><head>
+
+
+
+  <script src="./dist/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="./dist/sweetalert.css">
+
+	  <script src="./funciones.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>DataTables example - Bootstrap 3</title>
@@ -136,6 +145,91 @@ $(document).ready(function() {
 				</tr>				
 			</tbody>
 		</table>
-	</div>  
+	</div>
+
+<form action="nexoadministrador.php" method="post">
+		<section class="container">
+			<div class="login">
+				<h1>Resumen Liquidaciones - TODOS</h1>
+					<label>Empresa: </label>
+			        <select name="grupo" id="grupo">
+
+						<option value="todos">TODAS LAS EMPRESAS</option>
+
+						<option value="EdesurAlta">Edesur Alta</option>
+						<option value="EdesurMantenimiento">Edesur Mantenimiento</option>
+						<option value="EdesurMediaBaja">Edesur Media y Baja</option>
+						<option value="EdesurTelecomunicaciones">Edesur Telecomunicaciones</option>
+						<option value="OtrosEdesur">Otros Edesur</option>
+
+						<option value="Cosugas">Cosugas</option>
+						<option value="EmaServicios">Ema Servicios</option>
+						<option value="Inarteco">Inarteco</option>
+						<option value="YPF">YPF</option>
+						<option value="OtrosGas">Otros Gas</option>
+
+						<option value="Cablevision">Cablevision</option>
+						<option value="Metrotel">Metrotel</option>				
+						<option value="Telefonica">Telefonica</option>
+						<option value="Telecentro">Telecentro</option>
+						<option value="Telmex">Telmex</option>
+						<option value="Telecom">Telecom</option>
+						<option value="OtrosTelecomunicaciones">Otros Telecomunicaciones</option>
+
+						<option value="CosugasAysa">Cosugas Aysa</option>
+						<option value="OtrosAySA">Otros AySA</option>
+
+			        </select>
+			        <?php 
+					if ($_SESSION['admin']==1)
+					{
+						echo('<button type="button" class="round medium purple button" onclick="impagasAdmin()">Impagas</button>');
+						echo('<button type="button" class="round medium purple button" onclick="archivadosAdmin()">Archiv</button>');
+					}
+				?>
+			       
+
+
+				<br><br>
+				<label>Año:</label>
+				<select name="anio" id="anio">
+					<option value="2017">2017	</option>
+					<option value="2016">2016	</option>
+				</select>
+
+				<label>Mes:</label>
+				<select name="mes" id="mes">
+					<option value="-">TODOS</option>
+					<option value="-01">Enero</option>
+					<option value="-02">Febrero</option>
+					<option value="-03">Marzo</option>
+					<option value="-04">Abril</option>
+					<option value="-05">Mayo</option>
+					<option value="-06">Junio</option>
+					<option value="-07">Julio</option>
+					<option value="-08">Agosto</option>
+					<option value="-09">Septiembre</option>
+					<option value="-10">Octubre</option>
+					<option value="-11">Noviembre</option>
+					<option value="-12">Diciembre</option>
+				</select>
+
+ 				<br><br>
+ 				
+				<button type="button" class="round medium blue button" onclick="tablaTodos(0)">Impagas</button>
+
+				<button type="button" class="round medium blue button" onclick="archivados(0)">Archivadas</button>
+
+				<input type="hidden" id="subgrupo" value=0>
+			</div>
+			
+			<div class="login" id="tablapersonas">
+			</div>	
+
+		</section>
+	</form>
+
+
+
   </body>
 </html>
